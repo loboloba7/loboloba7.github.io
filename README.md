@@ -1,1 +1,276 @@
-# loboloba7.github.io
+<!DOCTYPE html>
+<html lang="es">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Direcci&oacute;n de Mercados y Comercio Aut&oacute;nomo GAD Cuenca</title>
+	<style type="text/css">* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; color:#333; line-height:1.5; }
+
+/* Menú */
+header {
+  position:fixed; top:0; left:0; right:0;
+  background:rgba(139,29,29,0.9); color:white; z-index:1000; transition:background .3s;
+}
+header.sticky { background:#8B1D1D; }
+.header-content { max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:0.75rem 1rem; }
+.logo h1 { font-size:1.5rem; }
+.main-nav ul { list-style:none; display:flex; flex-wrap:wrap; }
+.main-nav li { margin-left:1rem; }
+.main-nav a { color:white; text-decoration:none; padding:0.5rem; display:block; font-size:1rem; }
+.main-nav a:hover { background:rgba(255,255,255,0.1); border-radius:4px; }
+.menu-toggle { display:none; background:none; border:none; font-size:1.8rem; color:white; }
+
+/* Carrusel */
+.carousel {
+  margin-top:70px; width:100%; height:40vh; max-height:400px;
+  overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; background:#000;
+}
+.carousel img {
+  max-width:100%; max-height:100%; display:none; object-fit:cover; transition:opacity 0.5s;
+}
+.carousel img.active { display:block; }
+.prev, .next {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,0.5); color:white; border:none; font-size:2rem;
+  padding:0.2rem 0.5rem; cursor:pointer; border-radius:3px; z-index:10;
+}
+.prev{left:10px;} .next{right:10px;}
+.prev:hover, .next:hover{background:rgba(0,0,0,0.7);}
+.dots { position:absolute; bottom:10px; width:100%; text-align:center; }
+.dot { height:10px; width:10px; margin:0 4px; display:inline-block; border-radius:50%; background:#bbb; cursor:pointer; }
+.dot.active { background:#8B1D1D; }
+
+/* Hero */
+.hero { height:50vh; min-height:300px; width:100%; background:url('hero.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; text-align:center; color:white; position:relative; }
+.hero::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4);}
+.hero-content { position:relative; z-index:1; max-width:90%; padding:1rem; }
+.hero-content h1 { font-size:2.5vw; min-font-size:24px; margin-bottom:1rem; }
+.hero-content p { font-size:1.5vw; min-font-size:16px; margin-bottom:1.5rem; }
+.btn-hero { background:#CFAE70;color:#8B1D1D;text-decoration:none;padding:0.75rem 1.5rem;border-radius:5px;font-weight:bold; transition:background .3s; font-size:1rem;}
+.btn-hero:hover { background:#b7935a; }
+
+/* Servicios */
+.section-services{max-width:1200px;margin:2rem auto;padding:0 1rem;}
+.section-services h2{text-align:center;margin-bottom:1.5rem;font-size:2vw; min-font-size:20px; color:#8B1D1D;}
+.cards-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.card{background:white;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:center;padding:2rem 1rem;transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-5px);box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+.card .icon img{width:60px;margin-bottom:1rem;transition:transform .3s;}
+.card:hover .icon img{transform:scale(1.2);}
+.card h3{font-size:1.2rem;margin-bottom:0.5rem;color:#333;}
+.card p{color:#666;margin-bottom:1rem;font-size:1rem;}
+.card .btn{display:inline-block;padding:0.5rem 1rem;background:#CFAE70;color:#8B1D1D;text-decoration:none;border-radius:4px;font-weight:bold;}
+.card .btn:hover{background:#b7935a;}
+
+/* Contacto */
+.contact-section{background-color:#f5f5f5;padding:2rem 1rem;text-align:center;}
+.contact-section h2{margin-bottom:1rem;font-size:1.75rem;color:#8B1D1D;}
+.contact-section p{margin:0.5rem 0;font-size:1rem;color:#555;}
+
+/* Botones flotantes */
+.whatsapp, .facebook{position:fixed;right:20px; z-index:1001;}
+.whatsapp{bottom:20px;} .facebook{bottom:80px;}
+.whatsapp a, .facebook a{display:block;padding:0.75rem 1rem;border-radius:50px;text-decoration:none;box-shadow:0 2px 5px rgba(0,0,0,0.3);font-weight:bold;color:white;}
+.whatsapp a{background:#25D366;} .facebook a{background:#1877F2;}
+.whatsapp a:hover{background:#1ebe5d;} .facebook a:hover{background:#145dbf;}
+
+/* Bot de ayuda */
+#chatBot{
+  position:fixed; bottom:20px; right:140px; width:300px; max-height:400px;
+  font-family:Arial,sans-serif; display:flex; flex-direction:column;
+  border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  transition:all 0.3s; z-index:1002; font-size:14px;
+}
+#chatBotHeader{background:#8B1D1D; color:#fff; padding:10px; cursor:pointer; font-weight:bold;}
+#chatBotBody{background:#fff; flex:1; padding:10px; overflow-y:auto; display:flex; flex-direction:column;}
+#chatBotInput{border:none; border-top:1px solid #ccc; padding:10px; width:100%; box-sizing:border-box; outline:none;}
+.message{padding:8px 10px; margin-bottom:8px; border-radius:10px; max-width:80%;}
+.message.bot{background:#CFAE70;color:#8B1D1D;align-self:flex-start;}
+.message.user{background:#8B1D1D;color:white;align-self:flex-end;}
+
+/* Media Queries */
+@media(max-width:1024px){
+  .hero-content h1{font-size:3vw;}
+  .hero-content p{font-size:2vw;}
+}
+@media(max-width:768px){
+  .main-nav ul{display:none;flex-direction:column;width:100%;background:#8B1D1D;}
+  .main-nav li{margin:0;text-align:center;}
+  .menu-toggle{display:block;}
+  .hero{height:40vh;}
+  .carousel{height:30vh; max-height:250px;}
+}
+@media(max-width:480px){
+  .hero-content h1{font-size:5vw;}
+  .hero-content p{font-size:3.5vw;}
+  .carousel{height:25vh; max-height:200px;}
+}
+	</style>
+</head>
+<body>
+<header>
+<div class="header-content">
+<div class="logo">
+<h1>Direcci&oacute;n de Mercados y Comercio Aut&oacute;nomo</h1>
+</div>
+<button class="menu-toggle">☰</button>
+
+<nav class="main-nav">
+<ul>
+	<li><a href="#inicio">Inicio</a></li>
+	<li><a href="#contacto">Contacto</a></li>
+	<li><a href="https://www.cuenca.gob.ec/taxonomy/term/26">Tr&aacute;mites en l&iacute;nea</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- Carrusel -->
+
+<div class="carousel" id="carousel"><img alt="Cuenca Centro" src="img1.jpg" /> <img alt="Mercado de Cuenca" src="img2.jpg" /> <img alt="Catedral Nueva Cuenca" src="img3.jpg" /> <img alt="Catedral Nueva" src="img4.jpg" /><img alt="Catedral Nueva" src="img5.jpg" /><img alt="Catedral Nueva" src="100.jpg" /><img alt="Catedral Nueva" src="100.jpg" /><button class="prev">❮</button><button class="next">❯</button>
+
+<div class="dots" id="dots">&nbsp;</div>
+</div>
+<!-- Hero -->
+
+<section class="hero" id="inicio">
+<div class="hero-content">
+<h1>Bienvenidos a los Mercados de Cuenca</h1>
+
+<p>Productos frescos, espacios para comerciantes</p>
+<a class="btn-hero" href="#servicios">Explorar Servicios</a></div>
+</section>
+<!-- Servicios -->
+
+<section class="section-services" id="servicios">
+<h2>Servicios que ofrecemos</h2>
+
+<div class="cards-container">
+<div class="card">
+<div class="icon"><img alt="" src="icon-venta.svg" /></div>
+
+<h3>MENU</h3>
+
+<ul>
+	<li><a href="https://docs.google.com/spreadsheets/d/1M36SO77p6wLoZ9qw9BzJFQjJibuG_YqU/edit?usp=drive_link&amp;ouid=117994036781082144099&amp;rtpof=true&amp;sd=true">Mercados, Plazas y Plataformas Peque&ntilde;os </a></li>
+	<li><a href="https://docs.google.com/spreadsheets/d/1BnHnMEkdRbWise49HErl8EHZ_cfYZBKd/edit?usp=sharing&amp;ouid=117994036781082144099&amp;rtpof=true&amp;sd=true">Mercados, Plazas y Plataformas Grandes </a></li>
+	<li><a href="https://docs.google.com/spreadsheets/d/1SDVjLxDzZZ32VchBt3QOBjfjcGsbFQ-e/edit?usp=sharing&amp;ouid=117994036781082144099&amp;rtpof=true&amp;sd=true">Comercio Aut&oacute;nomo </a></li>
+	<li><a href="https://docs.google.com/spreadsheets/d/1Yi1d6xCT8fZL7ya-NJ4tqVpJKt299OIU/edit?usp=sharing&amp;ouid=117994036781082144099&amp;rtpof=true&amp;sd=true">Concesiones Hist&oacute;ricas </a></li>
+	<li><a href="https://enlinea.cuenca.gob.ec/#/impuestos">Pagos pendientes comerciantes</a></li>
+	<li><a href="https://enlinea.cuenca.gob.ec/#/impuestos-cancelados">Pagos cancelados comerciantes</a></li>
+	<li><a href="https://docs.google.com/spreadsheets/d/1OQ_3tY3CTIkkidz7ELQbHX1rWwatYBD9xKf41Niw-RA/edit?usp=sharing">Monitoreo</a></li>
+	<li><a href="https://docs.google.com/spreadsheets/d/1WekK8XP5N65RWGKI70xLTZpV7WKkfx5D/edit?usp=drive_link&amp;ouid=117994036781082144099&amp;rtpof=true&amp;sd=true">Poblaci&ograve;n</a></li>
+	<li><a href="https://hux9dwyzalzf4pkhsz1j0a.on.drv.tw/comerciante/menu.html">Tr&agrave;mites Comerciantes</a></li>
+	<li><a href="https://hux9dwyzalzf4pkhsz1j0a.on.drv.tw/GENEXUS3/admin.html">Admin</a></li>
+	<li><a href="https://www.cuenca.gob.ec/taxonomy/term/26">Tr&aacute;mites en l&iacute;nea</a></li>
+</ul>
+</div>
+
+<div class="card">
+<div class="icon"><img alt="" src="icon-espacios.svg" /></div>
+</div>
+</div>
+</section>
+<!-- Contacto -->
+
+<section class="contact-section" id="contacto">
+<h2>&iquest;Necesitas m&aacute;s informaci&oacute;n?</h2>
+
+<p>Calle Tarqui entre Calle Larga y Calle Presidente Cordova</p>
+
+<p>Tel&eacute;fono: (593-7) 4134900 / 4134901</p>
+
+<p>Atenci&oacute;n de lunes a viernes de 8:00 a 16:45</p>
+</section>
+<!-- Botones flotantes -->
+
+<div class="whatsapp"><a href="https://wa.me/0969941253" target="_blank">WhatsApp</a></div>
+
+<div class="facebook"><a href="https://www.facebook.com/profile.php?id=61574599640678" target="_blank">Facebook</a></div>
+<!-- Bot de ayuda -->
+
+<div id="chatBot">
+<div id="chatBotHeader">💬 Ayuda</div>
+
+<div id="chatBotBody">
+<div class="message bot">&iexcl;Hola! Bienvenido a los Mercados de Cuenca. &iquest;En qu&eacute; podemos ayudarte?</div>
+</div>
+<input id="chatBotInput" placeholder="Escribe tu mensaje..." type="text" /></div>
+<script>
+// Sticky header
+window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('sticky',window.scrollY>50);});
+
+// Menú hamburguesa
+const toggle=document.querySelector('.menu-toggle');
+const navMenu=document.querySelector('.main-nav ul');
+toggle.addEventListener('click',()=>{navMenu.style.display=navMenu.style.display==='flex'?'none':'flex';});
+
+// Carrusel
+const carouselImages = document.querySelectorAll('#carousel img');
+const carouselDots = document.getElementById('dots');
+let currentIndex = 0;
+
+// Crear puntos
+carouselImages.forEach((img,i)=>{
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if(i===0) dot.classList.add('active');
+  carouselDots.appendChild(dot);
+  dot.addEventListener('click', ()=>{ showImage(i); resetInterval(); });
+});
+
+const dots = document.querySelectorAll('#dots .dot');
+
+function showImage(index){
+  carouselImages.forEach((img,i)=> img.classList.toggle('active', i===index));
+  dots.forEach((dot,i)=> dot.classList.toggle('active', i===index));
+  currentIndex=index;
+}
+
+function nextImage(){ showImage((currentIndex+1)%carouselImages.length); }
+function prevImage(){ showImage((currentIndex-1+carouselImages.length)%carouselImages.length); }
+
+document.querySelector('.next').addEventListener('click', ()=>{ nextImage(); resetInterval(); });
+document.querySelector('.prev').addEventListener('click', ()=>{ prevImage(); resetInterval(); });
+
+let interval = setInterval(nextImage, 4000);
+function resetInterval(){ clearInterval(interval); interval = setInterval(nextImage, 4000); }
+
+// Bot de ayuda
+const chatBot = document.getElementById('chatBot');
+const chatBotHeader = document.getElementById('chatBotHeader');
+const chatBotBody = document.getElementById('chatBotBody');
+const chatBotInput = document.getElementById('chatBotInput');
+let botOpen = true;
+
+chatBotHeader.addEventListener('click', ()=>{
+  botOpen = !botOpen;
+  chatBotBody.style.display = botOpen ? 'flex' : 'none';
+  chatBotInput.style.display = botOpen ? 'block' : 'none';
+});
+
+chatBotInput.addEventListener('keypress', function(e){
+  if(e.key==='Enter' && chatBotInput.value.trim()!==''){
+    const userMsg = document.createElement('div');
+    userMsg.className='message user';
+    userMsg.textContent=chatBotInput.value;
+    chatBotBody.appendChild(userMsg);
+    chatBotBody.scrollTop = chatBotBody.scrollHeight;
+
+    const botMsg = document.createElement('div');
+    botMsg.className='message bot';
+    botMsg.innerHTML = getBotResponse(chatBotInput.value);
+    chatBotBody.appendChild(botMsg);
+    chatBotBody.scrollTop = chatBotBody.scrollHeight;
+    chatBotInput.value='';
+  }
+});
+
+function getBotResponse(msg){
+  msg = msg.toLowerCase();
+  if(msg.includes('horario')) return 'Nuestro horario de atención es de lunes a viernes de 8:00 a 16:45.';
+  if(msg.includes('contacto') || msg.includes('teléfono')) return 'Puedes llamarnos al (593-7) 4134900 / 4134901.';
+  if(msg.includes('ubicación') || msg.includes('dónde')) return 'Nos encontramos en la Calle Simón Bolívar y Calle Manuel Vega, Cuenca.';
+  if(msg.includes('trámite') || msg.includes('tramites')) return 'Para realizar trámites en línea, visita <a href="https://www.cuenca.gob.ec/taxonomy/term/26" target="_blank">este enlace</a>.';
+  return 'Hola, en un momento te atenderemos.';
+}
+</script></body>
+</html>
